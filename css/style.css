@@ -4528,18 +4528,23 @@ button,
 }
 
 .how .swiper-wrapper {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 15px;
+  gap: 50px 30px;
 }
 
 .how .swiper-slide {
   margin-left: auto;
   max-width: 330px;
+  height: auto;
   width: 100%;
 }
 
@@ -5052,6 +5057,9 @@ button,
   }
 
   .how .swiper-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: start;
