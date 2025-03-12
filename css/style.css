@@ -4333,7 +4333,7 @@ button,
   width: 600px;
   height: auto;
   overflow: hidden;
-  margin: 0;
+  margin: -30px 0 0;
 }
 
 .intro .swiper-slide {
@@ -4352,6 +4352,11 @@ button,
   -webkit-transform-origin: 0%;
   -ms-transform-origin: 0%;
   transform-origin: 0%;
+  padding: 30px 0;
+}
+
+.intro .swiper-slide .swiper-slide-shadow-cube {
+  display: none;
 }
 
 .intro .swiper-slide img {
@@ -4932,12 +4937,16 @@ button,
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    gap: 50px;
-    padding: 45px 0;
+    gap: 0px;
+    padding: 45px 0 0;
   }
 
   .intro .swiper {
     margin: 0 auto;
+  }
+
+  .intro .swiper-slide {
+    padding: 50px 0;
   }
 
   .intro__text {
