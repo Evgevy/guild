@@ -3636,7 +3636,7 @@ button,
 .form .custom-checkbox__field {
   width: 25px;
   height: 25px;
-  border: 2px solid blue;
+  border: 2px solid #365C4E;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3677,7 +3677,7 @@ button,
 .form .custom-checkbox__icon svg {
   width: 18px;
   height: 18px;
-  fill: blue;
+  fill: #365C4E;
 }
 
 .form .custom-checkbox__icon.checked {
@@ -3703,7 +3703,7 @@ button,
   bottom: -20px;
   left: 35px;
   text-decoration: underline;
-  color: blue;
+  color: #365C4E;
   font-family: "Raleway";
   font-size: 18px;
   line-height: 120%;
@@ -3718,10 +3718,14 @@ button,
 }
 
 .form__btn {
+  position: relative;
   display: block;
   max-width: 320px;
   width: 100%;
-  background: rgb(62, 212, 149);
+  z-index: 2;
+  background: -webkit-gradient(linear, left top, right top, from(#32431F), to(#365C4E));
+  background: -o-linear-gradient(left, #32431F 0%, #365C4E 100%);
+  background: linear-gradient(to right, #32431F 0%, #365C4E 100%);
   color: rgb(247, 247, 247);
   font-family: "Raleway";
   font-size: 18px;
@@ -3733,8 +3737,23 @@ button,
   transition: 0.3s;
 }
 
-.form__btn:hover {
-  opacity: 0.8;
+.form__btn::before {
+  display: block;
+  position: absolute;
+  content: "";
+  inset: 0;
+  background: -webkit-gradient(linear, right top, left top, from(#32431F), to(#365C4E));
+  background: -o-linear-gradient(right, #32431F 0%, #365C4E 100%);
+  background: linear-gradient(to left, #32431F 0%, #365C4E 100%);
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+.form__btn:hover::before {
+  opacity: 1;
 }
 
 .footer {
@@ -4411,23 +4430,19 @@ button,
   text-align: center;
 }
 
-.about__list {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 330px 330px 330px;
-  grid-template-columns: 330px 330px 330px;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.about__item {
+.about__slider {
   width: 100%;
   height: 100%;
+  overflow: hidden;
+}
+
+.about .swiper-wrapper {
+  height: auto;
+}
+
+.about .swiper-slide {
+  width: 350px;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4435,11 +4450,13 @@ button,
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .about__image {
-  width: 100%;
-  height: 350px;
+  height: 380px;
   margin-bottom: 20px;
 }
 
@@ -4862,15 +4879,6 @@ button,
     top: 200px;
     right: 50px;
   }
-
-  .about__list {
-    -ms-grid-columns: 300px 300px 300px;
-    grid-template-columns: 300px 300px 300px;
-  }
-
-  .about__image {
-    height: 300px;
-  }
 }
 
 @media screen and (max-width: 1220px) {
@@ -5010,17 +5018,8 @@ button,
     margin-bottom: 50px;
   }
 
-  .about__list {
-    -ms-grid-columns: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
   .about__image {
-    height: 400px;
+    height: 350px;
   }
 
   .about__name {
@@ -5232,15 +5231,6 @@ button,
     font-size: 22px;
   }
 
-  .about__list {
-    -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
-  }
-
-  .about__image {
-    height: 100%;
-  }
-
   .advent .advent__list {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
@@ -5375,6 +5365,10 @@ button,
 
   .about__title {
     font-size: 20px;
+  }
+
+  .about__image {
+    height: 300px;
   }
 
   .how__title {
